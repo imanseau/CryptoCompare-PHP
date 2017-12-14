@@ -22,8 +22,11 @@ Please feel free to fork and modify this wrapper for your own use. If your fork 
 
 ## Donations
 Donations for my work are always welcome and greatly appreciated, feel free to send your thanks to any of the addresses below.
+
 Bitcoin:     3Hz1tsvPgfbkFowC91zmwi1ajnJaWzRu61
+
 Litecoin:    MBVV27GzkayjoavX629go1pxMa2cVeUbpr
+
 Ether:       0x47B40D2eDbEb33B19182709fE20DdcCCB0c18622
 
 ## GNU General Public License

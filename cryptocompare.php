@@ -100,7 +100,7 @@ class CryptoCompare {
         $this->fsym = $fsym;
         $this->tsym = $tsym;
         $this->e = $e;
-        $this->path = 'generateavg?';
+        $this->path = 'generateAvg?';
         $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e;
         return $this->get();
     }
@@ -120,7 +120,7 @@ class CryptoCompare {
         $this->tsym = $tsym;
         $this->e = $e;
         $this->UTCHourDiff = $UTCHourDiff;
-        $this->path = 'dayavg?';
+        $this->path = 'dayAvg?';
         $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&UTCHourDiff' . $this->UTCHourDiff;
         return $this->get();
     }

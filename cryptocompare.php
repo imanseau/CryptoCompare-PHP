@@ -9,32 +9,21 @@
  * Litecoin:    MBVV27GzkayjoavX629go1pxMa2cVeUbpr
  * Ether:       0x47B40D2eDbEb33B19182709fE20DdcCCB0c18622
  * 
- * Licensed Under Creative Commons
- * Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+ * CryptoCompare-PHP is an API wrapper to access data from CryptoCompare.com
+ * within a PHP application.
+ * Copyright (C) 2017  Ian Corbitt Manseau
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  * 
- * You are free to:
- *  Share — copy and redistribute the material in any medium or format
- *  Adapt — remix, transform, and build upon the material for any purpose, even 
- *  commercially.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  * 
- * Under the following terms:
- *  Attribution — You must give appropriate credit, provide a link to the 
- *  license, and indicate if changes were made. You may do so in any reasonable 
- *  manner, but not in any way that suggests the licensor endorses you or your 
- *  use.
- *  ShareAlike — If you remix, transform, or build upon the material, you must 
- *  distribute your contributions under the same license as the original.
- *  No additional restrictions — You may not apply legal terms or technological 
- *  measures that legally restrict others from doing anything the license 
- *  permits.
- * 
- * Notices:
- *  You do not have to comply with the license for elements of the material in 
- *  the public domain or where your use is permitted by an applicable exception 
- *  or limitation.
- *  No warranties are given. The license may not give you all of the permissions 
- *  necessary for your intended use. For example, other rights such as publicity, 
- *  privacy, or moral rights may limit how you use the material.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
  
 class CryptoCompare {
@@ -99,7 +88,7 @@ class CryptoCompare {
         return $this->get();
     }
     
-    function generateAvg($fsym, $tsym, $e = 'BitTrex') {
+    function generateavg($fsym, $tsym, $e = 'BitTrex') {
         /**
          * Compute the current trading info (price, vol, open, high, low etc) of
          * the requested pair as a volume weighted average based on the markets 
@@ -111,12 +100,12 @@ class CryptoCompare {
         $this->fsym = $fsym;
         $this->tsym = $tsym;
         $this->e = $e;
-        $this->path = 'generateAvg?';
+        $this->path = 'generateavg?';
         $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e;
         return $this->get();
     }
     
-    function dayAvg($fsym, $tsym, $UTCHourDiff = '-5', $e = 'BitTrex') {
+    function dayavg($fsym, $tsym, $UTCHourDiff = '-5', $e = 'BitTrex') {
         /**
          * Get day average price. The values are based on hourly vwap data and 
          * the average can be calculated in different waysIt uses BTC conversion 
@@ -131,7 +120,7 @@ class CryptoCompare {
         $this->tsym = $tsym;
         $this->e = $e;
         $this->UTCHourDiff = $UTCHourDiff;
-        $this->path = 'dayAvg?';
+        $this->path = 'dayavg?';
         $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&UTCHourDiff' . $this->UTCHourDiff;
         return $this->get();
     }

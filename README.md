@@ -21,7 +21,7 @@ Please feel free to fork and modify this wrapper for your own use. If your fork 
 * Improve documentaion on each function and how to use it
 
 ## My Other Crypto API Wrappers
-* [Bittrex-PHP](https://github.com/imanseau/Bittrex-PHP)
+* [Bittrex-PHP](https://github.com/imanseau/Bittrex-PHP) - A PHP API wrapper for Bittrex's API
 * CoinMarketCap - Comming Soon
 * WhaleClub - Comming Soon
 * GDAX - Comming Soon

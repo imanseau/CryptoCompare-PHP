@@ -10,7 +10,7 @@ Optional:Dowload/Copy cryptocompare-examples.php into the same directory. This f
 Below is an example of the code to call a function
 ```
 $obj = new CryptoCompare();
-$results = $obj->coinlist();
+$results = $obj->getmarkets();
 ```
 
 ## Forking

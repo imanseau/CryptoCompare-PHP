@@ -47,11 +47,13 @@ class CryptoCompare {
          * tsyms        To Symbols, include multiple symbols
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsym = $fsym;
-        $this->tsyms = $tsyms;
-        $this->e = $e;
-        $this->path = 'price?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsyms=' . $this->tsyms . '&e=' . $this->e;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsyms' => $tsyms,
+            'e'     => $e
+            );
+        $this->path = 'price';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -62,11 +64,13 @@ class CryptoCompare {
          * tsyms        To Symbols, include multiple symbols
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsyms = $fsyms;
-        $this->tsyms = $tsyms;
-        $this->e = $e;
-        $this->path = 'pricemulti?';
-        $this->url = $this->uri_2 . $this->path . 'fsyms=' . $this->fsyms . '&tsyms=' . $this->tsyms . '&e=' . $this->e;
+        $this->query = array(
+            'fsyms' => $fsyms,
+            'tsyms' => $tsyms,
+            'e'     => $e
+            );
+        $this->path = 'pricemulti';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -80,11 +84,13 @@ class CryptoCompare {
          * tsyms        To Symbols, include multiple symbols
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsyms = $fsyms;
-        $this->tsyms = $tsyms;
-        $this->e = $e;
-        $this->path = 'pricemultifull?';
-        $this->url = $this->uri_2 . $this->path . 'fsyms=' . $this->fsyms . '&tsyms=' . $this->tsyms . '&e=' . $this->e;
+        $this->query = array(
+            'fsyms' => $fsyms,
+            'tsyms' => $tsyms,
+            'e'     => $e
+            );
+        $this->path = 'pricemultifull';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -97,11 +103,13 @@ class CryptoCompare {
          * tsym         To Symbol
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->e = $e;
-        $this->path = 'generateAvg?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e;
+        $this->query = array(
+            'fsym' => $fsym,
+            'tsym' => $tsym,
+            'e'     => $e
+            );
+        $this->path = 'generateAvg';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -116,12 +124,14 @@ class CryptoCompare {
          * e            Name of exchange. Default: BitTrex
          * UTCHourDiff  UTC Offset default -5 (EST)
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->e = $e;
-        $this->UTCHourDiff = $UTCHourDiff;
-        $this->path = 'dayAvg?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&UTCHourDiff' . $this->UTCHourDiff;
+        $this->query = array(
+            'fsym'         => $fsym,
+            'tsym'         => $tsym,
+            'e'             => $e,
+            'UTCHourDiff'   => $UTCHourDiff
+            );
+        $this->path = 'dayAvg';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -132,14 +142,16 @@ class CryptoCompare {
          * $fsym        From Symbol
          * $tsyms       To Symbols, include multiple
          * $ts          timestamp
-         * $markets     Name of exchanges, include multiple
+         * $e           Name of exchanges, include multiple
          */
-        $this->fsym = $fsym;
-        $this->tsyms = $tsyms;
-        $this->ts = $ts;
-        $this->e = $e;
-        $this->path = 'pricehistorical?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsyms=' . $this->tsyms . '&e=' . $this->e . '&ts' . $this->ts;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsyms' => $tsyms,
+            'ts'    => $ts,
+            'e'     => $e
+            );
+        $this->path = 'pricehistorical';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -154,10 +166,12 @@ class CryptoCompare {
          * fsym         From Symbol
          * tsym         To Symbols
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->path = 'coinsnapshot?';
-        $this->url = $this->uri_1 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsym'  => $tsym
+            );
+        $this->path = 'coinsnapshot';
+        $this->url = $this->uri_1 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -168,9 +182,11 @@ class CryptoCompare {
          * of the coin) and the aggregated prices for all pairs available.
          * id       The id of the coin you want data for
          */
-        $this->id = $id;
-        $this->path = 'coinsnapshotfullbyid?';
-        $this->url = $this->uri_1 . $this->path . 'id=' . $this->id;
+        $this->query = array(
+            'id'    => $id
+            );
+        $this->path = 'coinsnapshotfullbyid';
+        $this->url = $this->uri_1 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -181,9 +197,11 @@ class CryptoCompare {
          * get data from our website that is available to the public.
          * id       The id of the coin you want data for
          */
-        $this->id = $id;
-        $this->path = 'socialstats?';
-        $this->url = $this->uri_1 . $this->path . 'id=' . $this->id;
+        $this->query = array(
+            'id'    => $id
+            );
+        $this->path = 'socialstats';
+        $this->url = $this->uri_1 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -197,12 +215,14 @@ class CryptoCompare {
          * limit        Max 2000
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->limit = $limit;
-        $this->e = $e;
-        $this->path = 'histominute?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&limit=' . $this->limit;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsym'  => $tsym,
+            'limit' => $limit,
+            'e'     => $e
+            );
+        $this->path = 'histominute';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -216,12 +236,14 @@ class CryptoCompare {
          * limit        Max 2000
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->limit = $limit;
-        $this->e = $e;
-        $this->path = 'histohour?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&limit=' . $this->limit;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsym'  => $tsym,
+            'limit' => $limit,
+            'e'     => $e
+            );
+        $this->path = 'histohour';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -234,12 +256,14 @@ class CryptoCompare {
          * limit        Max 2000
          * e            Name of exchange. Default: BitTrex
          */
-        $this->fsym = $fsym;
-        $this->tsym = $tsym;
-        $this->limit = $limit;
-        $this->e = $e;
-        $this->path = 'histoday?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&tsym=' . $this->tsym . '&e=' . $this->e . '&limit=' . $this->limit;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'tsym'  => $tsym,
+            'limit' => $limit,
+            'e'     => $e
+            );
+        $this->path = 'histoday';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
@@ -261,10 +285,12 @@ class CryptoCompare {
          * fsym         From Symbol
          * limit        Max 2000
          */
-        $this->fsym = $fsym;
-        $this->limit = $limit;
-        $this->path = 'top/pairs?';
-        $this->url = $this->uri_2 . $this->path . 'fsym=' . $this->fsym . '&limit=' . $this->limit;
+        $this->query = array(
+            'fsym'  => $fsym,
+            'limit' => $limit
+            );
+        $this->path = 'top/pairs';
+        $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     

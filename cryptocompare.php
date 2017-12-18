@@ -39,90 +39,146 @@ class CryptoCompare {
         return $this->get();
     }
     
-    function price($fsym, $tsyms, $e = 'BitTrex') {
+    function price($fsym, $tsyms, $e = 'BitTrex', $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Get the latest price for a list of one or more currencies. Really 
-         * fast, 20-60 ms. Cached each 10 seconds.
-         * fsym         From Symbol
-         * tsyms        To Symbols, include multiple symbols
-         * e            Name of exchange. Default: BitTrex
+         * $fast, 20-60 ms. Cached each 10 seconds.
+         * $fsym            From Symbol
+         * $tsyms           To Symbols, include multiple symbols
+         * $e               Name of exchange. Default: BitTrex
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
          */
         $this->query = array(
             'fsym'  => $fsym,
             'tsyms' => $tsyms,
             'e'     => $e
             );
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'price';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function pricemulti($fsyms, $tsyms, $e = 'BitTrex') {
+    function pricemulti($fsyms, $tsyms, $e = 'BitTrex', $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Get a matrix of currency prices.
-         * fsyms        From Symbols, include multiple symbols
-         * tsyms        To Symbols, include multiple symbols
-         * e            Name of exchange. Default: BitTrex
+         * $fsyms        From Symbols, include multiple symbols
+         * $tsyms        To Symbols, include multiple symbols
+         * $e            Name of exchange. Default: BitTrex
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
          */
         $this->query = array(
             'fsyms' => $fsyms,
             'tsyms' => $tsyms,
             'e'     => $e
             );
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'pricemulti';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function pricemultifull($fsyms, $tsyms, $e = 'BitTrex') {
+    function pricemultifull($fsyms, $tsyms, $e = 'BitTrex', $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Get all the current trading info (price, vol, open, high, low etc) of 
          * any list of cryptocurrencies in any other currency that you need.If 
          * the crypto does not trade directly into the toSymbol requested, BTC 
          * will be used for conversion.
-         * fsyms        From Symbols, include multiple symbols
-         * tsyms        To Symbols, include multiple symbols
-         * e            Name of exchange. Default: BitTrex
+         * $fsyms        From Symbols, include multiple symbols
+         * $tsyms        To Symbols, include multiple symbols
+         * $e            Name of exchange. Default: BitTrex
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
          */
         $this->query = array(
             'fsyms' => $fsyms,
             'tsyms' => $tsyms,
             'e'     => $e
             );
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'pricemultifull';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function generateavg($fsym, $tsym, $e = 'BitTrex') {
+    function generateavg($fsym, $tsym, $e = 'BitTrex', $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Compute the current trading info (price, vol, open, high, low etc) of
          * the requested pair as a volume weighted average based on the markets 
          * requested.
-         * fsym         From Symbol
-         * tsym         To Symbol
-         * e            Name of exchange. Default: BitTrex
+         * $fsym            From Symbol
+         * $tsym            To Symbol
+         * $e               Name of exchange. Default: BitTrex
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
          */
         $this->query = array(
             'fsym' => $fsym,
             'tsym' => $tsym,
             'e'     => $e
             );
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'generateAvg';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function dayavg($fsym, $tsym, $UTCHourDiff = '-5', $e = 'BitTrex') {
+    function dayavg($fsym, $tsym, $UTCHourDiff = '-5', $e = 'BitTrex', $avgType = NULL, $toTs = NULL, $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Get day average price. The values are based on hourly vwap data and 
          * the average can be calculated in different waysIt uses BTC conversion 
          * if data is not available because the coin is not trading in the 
          * specified currency.
-         * fsym         From Symbol
-         * tsym         To Symbols
-         * e            Name of exchange. Default: BitTrex
-         * UTCHourDiff  UTC Offset default -5 (EST)
+         * $fsym            From Symbol
+         * $tsym            To Symbols
+         * $e               Name of exchange. Default: BitTrex
+         * $UTCHourDiff     UTC Offset default -5 (EST)
+         * $toTs            hour unit
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
+         * $avgType         Default: HourVWAP - a VWAP of the hourly close price
+         *                      MidHighLow - the average between the 24 H high and low.
+         *                      VolFVolT - the total volume from / the total volume to 
+         *                      (only avilable with tryConversion set to false so only for direct trades but the value should be the most accurate price)
          */
         $this->query = array(
             'fsym'         => $fsym,
@@ -130,19 +186,37 @@ class CryptoCompare {
             'e'             => $e,
             'UTCHourDiff'   => $UTCHourDiff
             );
+        if (!empty($toTs)) {
+            $this->query['toTs'] = $toTs;
+        }
+        if (!empty($avgType)) {
+            $this->query['avgType'] = $avgType;
+        }
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'dayAvg';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function pricehistorical($fsym, $tsyms, $ts, $e = 'BitTrex') {
+    function pricehistorical($fsym, $tsyms, $ts, $e = 'BitTrex', $extraParams = NULL, $sign = NULL, $tryConversion = NULL) {
         /**
          * Get the price of any cryptocurrency in any other currency that you 
          * need at a given timestamp.
-         * $fsym        From Symbol
-         * $tsyms       To Symbols, include multiple
-         * $ts          timestamp
-         * $e           Name of exchanges, include multiple
+         * $fsym            From Symbol
+         * $tsyms           To Symbols, include multiple
+         * $ts              timestamp
+         * $e               Name of exchanges, include multiple
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
          */
         $this->query = array(
             'fsym'  => $fsym,
@@ -150,6 +224,15 @@ class CryptoCompare {
             'ts'    => $ts,
             'e'     => $e
             );
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
         $this->path = 'pricehistorical';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
@@ -163,8 +246,8 @@ class CryptoCompare {
          * Note: This api is getting abused and will be moved to a min-api path 
          * in the near future. Please try not to use it.
          * 
-         * fsym         From Symbol
-         * tsym         To Symbols
+         * $fsym        From Symbol
+         * $tsym        To Symbols
          */
         $this->query = array(
             'fsym'  => $fsym,
@@ -180,7 +263,7 @@ class CryptoCompare {
          * Get the general, subs (used to connect to the streamer and to figure 
          * out what exchanges we have data for and what are the exact coin pairs 
          * of the coin) and the aggregated prices for all pairs available.
-         * id       The id of the coin you want data for
+         * $id      The id of the coin you want data for
          */
         $this->query = array(
             'id'    => $id
@@ -195,7 +278,7 @@ class CryptoCompare {
          * Get CryptoCompare website, Facebook, code repository, Twitter and 
          * Reddit data for coins. If called with the id of a cryptopian you just 
          * get data from our website that is available to the public.
-         * id       The id of the coin you want data for
+         * $id      The id of the coin you want data for
          */
         $this->query = array(
             'id'    => $id
@@ -205,15 +288,20 @@ class CryptoCompare {
         return $this->get();
     }
     
-    function histominute($fsym, $tsym, $limit, $e = 'BitTrex') {
+    function histominute($fsym, $tsym, $limit, $e = 'BitTrex', $toTs = NULL, $extraParams = NULL, $sign = NULL, $tryConversion = NULL, $aggregate = NULL) {
         /**
          * Get open, high, low, close, volumefrom and volumeto from the each 
          * minute historical data. This data is only stored for 7 days, if you 
          * need more,use the hourly or daily path.
-         * fsym         From Symbol
-         * tsym         To Symbols
-         * limit        Max 2000
-         * e            Name of exchange. Default: BitTrex
+         * $fsym            From Symbol
+         * $tsym            To Symbols
+         * $limit           Max 2000
+         * $e               Name of exchange. Default: BitTrex
+         * $toTs            timestamp
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
+         * $aggregate       Degault 1
          */
         $this->query = array(
             'fsym'  => $fsym,
@@ -221,20 +309,40 @@ class CryptoCompare {
             'limit' => $limit,
             'e'     => $e
             );
+        if (!empty($toTs)) {
+            $this->query['toTs'] = $toTs;
+        }
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
+        if (!empty($aggregate)) {
+            $this->query['aggregate'] = $aggregate;
+        }
         $this->path = 'histominute';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function histohour($fsym, $tsym, $limit, $e = 'BitTrex') {
+    function histohour($fsym, $tsym, $limit, $e = 'BitTrex', $toTs = NULL, $extraParams = NULL, $sign = NULL, $tryConversion = NULL, $aggregate = NULL) {
         /**
          * Get open, high, low, close, volumefrom and volumeto from the each 
          * hour historical data. It uses BTC conversion if data is not available 
          * because the coin is not trading in the specified currency.
-         * fsym         From Symbol
-         * tsym         To Symbols
-         * limit        Max 2000
-         * e            Name of exchange. Default: BitTrex
+         * $fsym            From Symbol
+         * $tsym            To Symbols
+         * $limit           Max 2000
+         * $e               Name of exchange. Default: BitTrex
+         * $toTs            timestamp
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
+         * $aggregate       Degault 1
          */
         $this->query = array(
             'fsym'  => $fsym,
@@ -242,19 +350,39 @@ class CryptoCompare {
             'limit' => $limit,
             'e'     => $e
             );
+        if (!empty($toTs)) {
+            $this->query['toTs'] = $toTs;
+        }
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
+        if (!empty($aggregate)) {
+            $this->query['aggregate'] = $aggregate;
+        }
         $this->path = 'histohour';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
     }
     
-    function histoday($fsym, $tsym, $limit, $e = 'BitTrex') {
+    function histoday($fsym, $tsym, $limit, $e = 'BitTrex', $toTs = NULL, $extraParams = NULL, $sign = NULL, $tryConversion = NULL, $aggregate = NULL) {
         /**
          * Get open, high, low, close, volumefrom and volumeto daily historical 
          * data. The values are based on 00:00 GMT time
-         * fsym         From Symbol
-         * tsym         To Symbols
-         * limit        Max 2000
-         * e            Name of exchange. Default: BitTrex
+         * $fsym            From Symbol
+         * $tsym            To Symbols
+         * $limit           Max 2000
+         * $e               Name of exchange. Default: BitTrex
+         * $toTs            timestamp
+         * $extraParams     Name of your application
+         * $sign            If set to true, the server will sign the requests.
+         * $tryConversion   If set to false, it will try to get values without using any conversion at all
+         * $aggregate       Degault 1
          */
         $this->query = array(
             'fsym'  => $fsym,
@@ -262,6 +390,21 @@ class CryptoCompare {
             'limit' => $limit,
             'e'     => $e
             );
+        if (!empty($toTs)) {
+            $this->query['toTs'] = $toTs;
+        }
+        if (!empty($extraParams)) {
+            $this->query['extraParams'] = $extraParams;
+        }
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
+        if (!empty($tryConversion)) {
+            $this->query['tryConversion'] = $tryConversion;
+        }
+        if (!empty($aggregate)) {
+            $this->query['aggregate'] = $aggregate;
+        }
         $this->path = 'histoday';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
@@ -277,18 +420,24 @@ class CryptoCompare {
         return $this->get();
     }
     
-    function toppairs($fsym, $limit) {
+    function toppairs($fsym, $tsym, $limit, $sign = NULL) {
         /**
          * Get top pairs by volume for a currency (always uses our aggregated 
          * data). The number of pairs you get is the minimum of the limit you 
          * set (default 5) and the total number of pairs available
-         * fsym         From Symbol
-         * limit        Max 2000
+         * $fsym        From Symbol
+         * $tsym        To Symbol
+         * $limit       Max 2000
+         * $sign        If set to true, the server will sign the request 
          */
         $this->query = array(
             'fsym'  => $fsym,
             'limit' => $limit
             );
+        
+        if (!empty($sign)) {
+            $this->query['sign'] = $sign;
+        }
         $this->path = 'top/pairs';
         $this->url = $this->uri_2 . $this->path . '?' . http_build_query($this->query);
         return $this->get();
